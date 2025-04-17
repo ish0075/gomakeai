@@ -1,0 +1,22 @@
+{
+  "name": "functions",
+  "description": "GoMakeAI Cloud Functions",
+  "main": "lib/index.js",
+  "engines": {
+    "node": "18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "serve": "npm run build && firebase functions:shell",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.2.0",
+    "firebase-functions": "^6.3.2",
+    "openai": "^4.95.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.1",
+    "typescript": "^5.2.2"
+  }
+}

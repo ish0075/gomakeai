@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "gomakeai-dashboard"
+  },
+  "targets": {
+    "gomakeai-dashboard": {
+      "hosting": {
+        "metagtp": [
+          "gomakeai-dashboard"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
