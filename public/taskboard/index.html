@@ -1,69 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="bg-black text-white">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GTP Agent Taskboard</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <style>
-    body { font-family: sans-serif; background: #000; color: #fff; margin:0; padding:1rem; }
-    .grid { display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); }
-    .card { background:#111; border:1px solid #420042; padding:1rem; border-radius:0.5rem; }
-    button { background:#080; border:none; padding:0.5rem 1rem; color:#fff; border-radius:0.25rem; cursor:pointer; }
-    button[disabled] { opacity:0.5; cursor:not-allowed; }
-    pre { background:#222; padding:0.5rem; border-radius:0.25rem; overflow:auto; font-size:0.8rem; }
-  </style>
-</head>
+<head> … </head>
 <body>
-  <h1 style="text-align:center; color:#a66;">🧠 GTP Agent Taskboard</h1>
-  <div id="board" class="grid"></div>
-  <script>
-    // Initialize Supabase
-    const supabaseUrl = 'https://pgaowlzghxqeojdkdthj.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBnYW93bHpnaHhxZW9qZGtkdGhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4ODg5MjcsImV4cCI6MjA2MDQ2NDkyN30.UqQscD_dCrrg2urv0kfA64W9SVuhpKWiF_zceIsc_Hs'; // ← Replace this with your Supabase anon key
-    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
-    const agents = ["Buzzbot","Clarissa","Curt Dog","Big D","OutreachBot","ThinkTank","Crawler"];
-
-    async function loadTasks() {
-      const board = document.getElementById('board');
-      board.innerHTML = '<p>Loading…</p>';
-      let all = [];
-      for (const agent of agents) {
-        const { data } = await supabaseClient
-          .from('agent_tasks')
-          .select('*')
-          .eq('agent_name', agent)
-          .order('created_at', { ascending: false });
-        all = all.concat(data);
-      }
-      board.innerHTML = '';
-      all.forEach(t => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <h2>${t.agent_name}</h2>
-          <p><strong>Type:</strong> ${t.task_type}</p>
-          <p><strong>Status:</strong> ${t.status}</p>
-          ${t.content ? `<pre>${JSON.stringify(t.content,null,2)}</pre>` : ''}
-          ${t.status==='pending' ? '<button>Approve</button>' : ''}
-        `;
-        if (t.status==='pending') {
-          const btn = card.querySelector('button');
-          btn.onclick = async () => {
-            btn.disabled = true;
-            await supabaseClient
-              .from('agent_tasks')
-              .update({ status:'approved' })
-              .eq('id', t.id);
-            loadTasks();
-          };
-        }
-        board.appendChild(card);
-      });
-    }
-
-    loadTasks();
-  </script>
+  <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBnYW93bHpnaHhxZW9qZGtkdGhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ4ODg5MjcsImV4cCI6MjA2MDQ2NDkyN30.UqQscD_dCrrg2urv0kfA64W9SVuhpKWiF_zceIsc_Hs>
 </body>
 </html>
