@@ -20,9 +20,8 @@
   <script>
     // Initialize Supabase
     const supabaseUrl = 'https://pgaowlzghxqeojdkdthj.supabase.co';
-    const supabaseKey = 'YOUR_ANON_KEY_HERE';
-    const { createClient } = supabaseJs;
-    const supabase = createClient(supabaseUrl, supabaseKey);
+    const supabaseKey = 'YOUR_ANON_KEY_HERE'; // ← Replace this with your Supabase anon key
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
     const agents = ["Buzzbot","Clarissa","Curt Dog","Big D","OutreachBot","ThinkTank","Crawler"];
 
@@ -31,7 +30,7 @@
       board.innerHTML = '<p>Loading…</p>';
       let all = [];
       for (const agent of agents) {
-        const { data } = await supabase
+        const { data } = await supabaseClient
           .from('agent_tasks')
           .select('*')
           .eq('agent_name', agent)
@@ -53,7 +52,7 @@
           const btn = card.querySelector('button');
           btn.onclick = async () => {
             btn.disabled = true;
-            await supabase
+            await supabaseClient
               .from('agent_tasks')
               .update({ status:'approved' })
               .eq('id', t.id);
