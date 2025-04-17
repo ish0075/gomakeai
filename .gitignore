@@ -1,0 +1,13 @@
+# Node
+node_modules/
+pnpm-lock.yaml
+
+# Vite
+dist/
+
+# Python venv
+api/venv/
+
+# Editor
+.vscode/
+.DS_Store
