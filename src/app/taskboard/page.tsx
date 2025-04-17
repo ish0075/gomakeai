@@ -20,7 +20,7 @@ export default function TaskboardPage() {
       "Big D",
       "OutreachBot",
       "ThinkTank",
-      "Crawler"
+      "Crawler",
     ];
     let all: any[] = [];
     for (const name of agents) {
@@ -36,8 +36,9 @@ export default function TaskboardPage() {
     loadTasks();
   }
 
-  if (loading)
+  if (loading) {
     return <div className="p-6 text-white bg-black">Loading…</div>;
+  }
 
   return (
     <div className="bg-black min-h-screen text-white p-6">
@@ -50,9 +51,7 @@ export default function TaskboardPage() {
             key={t.id}
             className="bg-zinc-900 border border-purple-800 p-4 rounded-lg"
           >
-            <h2 className="text-xl font-bold mb-1">
-              {t.agent_name}
-            </h2>
+            <h2 className="text-xl font-bold mb-1">{t.agent_name}</h2>
             <p className="text-purple-300 mb-1">
               <strong>Type:</strong> {t.task_type}
             </p>
@@ -78,4 +77,3 @@ export default function TaskboardPage() {
     </div>
   );
 }
-
