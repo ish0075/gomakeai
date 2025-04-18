@@ -51,7 +51,9 @@ export default function RotatingAgentCard() {
       <p className="text-white text-center mt-4 font-semibold text-xl">
         {agent.name}
       </p>
-      <p className="text-zinc-400 text-center text-sm">{agent.role}</p>
+      <p className="text-zinc-400 text-center text-sm">
+        {agent.role}
+      </p>
     </div>
   );
 }
