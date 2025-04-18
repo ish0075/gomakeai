@@ -1,3 +1,4 @@
+import React from "react";
 import HomePageHero from "@/components/HomePageHero";
 import HomePageAgents from "@/components/HomePageAgents";
 import HomePageFeatures from "@/components/HomePageFeatures";
