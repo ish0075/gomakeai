@@ -1,0 +1,8 @@
+Vercel CLI 41.6.1
+Retrieving project…
+Deploying ish0075s-projects/gomakeai
+Inspect: https://vercel.com/ish0075s-projects/gomakeai/6mcDD9xY6eTUDUg1bQ33MPWu8bcK [811ms]
+Production: https://gomakeai-c1u9xnmm4-ish0075s-projects.vercel.app [811ms]
+Queued
+Building
+Completing
