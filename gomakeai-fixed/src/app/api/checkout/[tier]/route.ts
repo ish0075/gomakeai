@@ -1,4 +1,3 @@
-// src/app/api/checkout/[tier]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -12,15 +11,15 @@ const PRICES: Record<string, string> = {
   growth: process.env.STRIPE_PRICE_GROWTH!,
 };
 
-export async function POST(req: NextRequest, { params }: { params: { tier: string } }) {
-  const { tier } = params;
+export async function POST(req: NextRequest) {
+  const url = new URL(req.url);
+  const tier = url.pathname.split("/").slice(-2, -1)[0]; // gets the dynamic [tier]
 
   if (!PRICES[tier]) {
     return NextResponse.json({ error: "Invalid tier" }, { status: 400 });
   }
 
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || req.headers.get("origin") || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || `${url.protocol}//${url.host}`;
 
   try {
     const session = await stripe.checkout.sessions.create({
