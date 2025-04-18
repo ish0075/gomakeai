@@ -1,10 +1,9 @@
 // src/app/layout.tsx
 import "./globals.css";
-import React from "react";
 
 export const metadata = {
-  title: "GoMakeAI – AI-Powered Builder",
-  description: "Your personal AI-powered agents to build apps fast",
+  title: "GoMakeAI",
+  description: "Bring your ideas to life with AI-powered tools and MegaGTP agents",
 };
 
 export default function RootLayout({
@@ -14,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-black text-white">
+        {children}
+      </body>
     </html>
   );
 }
