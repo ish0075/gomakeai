@@ -1,9 +1,10 @@
-import './globals.css';
-import React from 'react';
+// src/app/layout.tsx
+import "./globals.css";
+import React from "react";
 
 export const metadata = {
-  title: 'GoMakeAI',
-  description: 'AI-powered app builder with bots',
+  title: "GoMakeAI – AI-Powered Builder",
+  description: "Your personal AI-powered agents to build apps fast",
 };
 
 export default function RootLayout({

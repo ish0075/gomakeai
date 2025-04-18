@@ -1,3 +1,4 @@
+// src/app/page.tsx
 import React from "react";
 import HomePageHero from "@/components/HomePageHero";
 import HomePageAgents from "@/components/HomePageAgents";
